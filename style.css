@@ -1,0 +1,85 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+input:focus:invalid {
+.form-control: bs-danger-border-subtle;
+}
+
+.check-validation:valid{
+    background-image: url("check.jpg");
+    background-size: contain;
+    background-position: right top;
+    background-repeat: no-repeat;
+}
+
+
+
+}
+input:invalid{
+
+    background-size: contain;
+    background-position: right top;
+    background-repeat: no-repeat;
+
+}
+
+#erreur_mdp{
+    color: red;
+}
+
+.invisible{
+    display: none;
+}
+
+
+
+
+header{
+    background-color: mediumblue;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+
+}
+header a {
+    text-decoration: none;
+    color: white;
+}
+/*Mettre que lorsque on click dessus et active lien change de couleur*/
+.nav-link{
+    color: white;
+}
+
+#NavNomCompte{
+    align-items: baseline;
+}
+
+/*
+
+@media (min-width:360px) {
+
+    .d-flex {
+        display: block;
+    }
+    .container {
+        max-width:100%;
+        width: 100%;
+    }
+    .col-md-3{
+        width:100%;
+        float:left;
+        margin:0;
+    }
+    body{
+        background-color: aqua;
+    }
+}
+*/
+
+
+
+
