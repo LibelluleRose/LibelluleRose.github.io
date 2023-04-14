@@ -24,8 +24,8 @@
             <a class="nav-link " id="lienAccueil" href="index.html">Retour vers l'accueil</a>
         </div>
         <div class="d-flex ">
-            <p class="navbar-text " id="NavNomCompte"></p>
-            <a class="nav-link disabled" id="lienDeconnexion">Déconnexion</a> <!--disabled-->
+            <p class="navbar-text  " id="NavNomCompte"></p>
+            <a class="nav-link " id="lienDeconnexion" href="index.html">Déconnexion</a> <!--disabled-->
         </div>
 
     </nav>
@@ -36,6 +36,7 @@
 <!--
 Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
 -->
+
 <!--DÉBUT ACCORDÉON DE AJOUTER-->
 
 
@@ -58,8 +59,9 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
                         <div class="row mb-3">
                             <label for="ajouter-username" class="col-sm-4 col-form-label">Nom d'utilisateur</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="ajouter-username"
-                                       placeholder="Entre 5 et 10 caractères alphanumérique" min="5" max="10">
+                                <input type="text" class="form-control check-validation" id="ajouter-username"
+                                       placeholder="Entre 5 et 10 caractères alphanumérique" required
+                                       pattern="[a-z,A-Z,\d]{5,10}">
                             </div>
 
                         </div>
@@ -68,9 +70,9 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
                         <div class="row mb-3">
                             <label for="ajouter-password" class="col-sm-4 col-form-label">Mot de passe</label>
                             <div class="col-sm-7">
-                                <input type="ajouter-password" class="form-control" id="ajouter-password"
-                                       placeholder="Entre 5 et 10 caract. alphanumérique. Doit terminer par % ou & ou $" min="5" max="10"
-                                       pattern="[a-z,A-Z,\d]{5,10}[%,$,&]{1}">
+                                <input type="password" class="form-control check-validation" id="ajouter-password"
+                                       placeholder="Entre 5 et 10 caract. alphanumérique. Doit terminer par % ou & ou $"
+                                       required pattern="[a-z,A-Z,\d]{4,10}[%,$,&]{1}">
                             </div>
                         </div>
 
@@ -79,9 +81,10 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
                             <label for="ajouter-confirmer-password"
                                    class="col-sm-4 col-form-label">Confirmer le mot de passe</label>
                             <div class="col-sm-7">
-                                <input type="password" class="form-control" id="ajouter-confirmer-password"
-                                       placeholder="Confirmer le mot de passe" min="5" max="10"
-                                       pattern="[a-z,A-Z,\d]{5,10}[%,$,&]{1}">
+                                <input type="password" class="form-control check-validation"
+                                       id="ajouter-confirmer-password"
+                                       placeholder="Confirmer le mot de passe" required
+                                       pattern="[a-z,A-Z,\d]{4,10}[%,$,&]{1}">
                             </div>
                         </div>
 
@@ -126,21 +129,26 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
                         <div class="row mb-3">
                             <label for="ajouter-cle" class="col-sm-4 col-form-label">Clé de cryptage</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="ajouter-cle"
-                                       placeholder="5 caractères alphanumériques" min="5" max="5">
+                                <input type="text" class="form-control check-validation" id="ajouter-cle"
+                                       placeholder="5 caractères alphanumériques" pattern="[a-z,A-Z,\d]{5,5}" required>
                             </div>
 
                         </div>
 
                         <!--BOUTON-->
                         <div class="d-flex justify-content-center col gap-5 pt-5">
-                            <button class="btn btn-primary d-grid gap-2 col-2 " id="ajouter-btn-connexion"
-                                    type="submit">Ajouter
+
+                            <button type="submit" class="btn btn-primary d-grid gap-2 col-2 " id="ajouter-btn-connexion"
+                                    onclick="return Ajouter()">Ajouter
                             </button>
-                            <button class="btn btn-primary d-grid gap-2 col-2 " id="ajouter-btn-annuler" type="reset">
+
+
+                            <button type="reset" class="btn btn-primary d-grid gap-2 col-2 " id="ajouter-btn-annuler">
                                 Annuler
                             </button>
+
                         </div>
+
 
                     </form>
 
@@ -164,12 +172,12 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
                     <!--CONTENU DE MODIFIER-->
 
                     <form action="">
-                        <!--USERNAME-->
+                        <!--ID-->
                         <div class="row mb-3">
-                            <label for="mod-rech-username" class="col-sm-4 col-form-label">Nom d'utilisateur</label>
+                            <label for="mod-rech-id" class="col-sm-4 col-form-label">Id de l'utilisateur</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="mod-rech-username"
-                                       placeholder="Inscrire le nom d'utilisateur" min="5" max="10">
+                                <input type="text" class="form-control" id="mod-rech-id"
+                                       placeholder="Inscrire le id de l'utilisateur">
                             </div>
                         </div>
                         <!--BOUTON CHERCHER
@@ -183,7 +191,8 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
 
                     <!-- Button trigger modal -->
                     <div class="d-flex justify-content-center col gap-5 pt-2">
-                        <button class="btn btn-primary d-grid gap-2 col-2 " type="button" data-bs-toggle="modal"
+                        <button class="btn btn-primary d-grid gap-2 col-2 " id="btn-rechercherModifier" type="button"
+                                data-bs-toggle="modal"
                                 data-bs-target="#Modifier-Modal">
                             Rechercher
                         </button>
@@ -206,8 +215,10 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
                                             <label for="modifier-username" class="col-sm-4 col-form-label">Nom
                                                 d'utilisateur</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="modifier-username"
-                                                       placeholder="Entre 5 et 10 caractères alphanumérique" min="5" max="10">
+                                                <input type="text" class="form-control check-validation"
+                                                       id="modifier-username"
+                                                       placeholder="Entre 5 et 10 caractères alphanumérique" required
+                                                       pattern="[a-z,A-Z,\d]{5,10}">
                                             </div>
 
                                         </div>
@@ -217,21 +228,22 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
                                             <label for="modifier-password"
                                                    class="col-sm-4 col-form-label">Mot de passe</label>
                                             <div class="col-sm-8">
-                                                <input type="password" class="form-control" id="modifier-password"
-                                                       placeholder="Entre 5 à 10 caractères alphanumérique. Doit terminer par % ou & ou $" min="5" max="10"
-                                                       pattern="[a-z,A-Z,\d]{5,10}[%,$,&]{1}">
+                                                <input type="password" class="form-control check-validation"
+                                                       id="modifier-password"
+                                                       placeholder="Entre 5 à 10 caractères alphanumérique. Doit terminer par % ou & ou $"
+                                                       pattern="[a-z,A-Z,\d]{4,10}[%,$,&]{1}" required>
                                             </div>
                                         </div>
 
                                         <!--CONFIRMER PASSWORD-->
                                         <div class="row mb-3">
                                             <label for="modifier-confirmer-password"
-                                                   class="col-sm-4 col-form-label">Confirmer le mot de passe</label>
+                                                   class="col-sm-4 col-form-label ">Confirmer le mot de passe</label>
                                             <div class="col-sm-8">
-                                                <input type="password" class="form-control"
+                                                <input type="password" class="form-control check-validation"
                                                        id="modifier-confirmer-password"
-                                                       placeholder="Confirmer le mot de passe" min="5" max="10"
-                                                       pattern="[a-z,A-Z,\d]{5,10}[%,$,&]{1}">
+                                                       placeholder="Confirmer le mot de passe"
+                                                       pattern="[a-z,A-Z,\d]{5,10}[%,$,&]{1}" required>
                                             </div>
                                         </div>
 
@@ -277,11 +289,13 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
 
                                         <!--CLÉ DE CRYPTAGE-->
                                         <div class="row mb-3">
-                                            <label for="modifier-cle" class="col-sm-4 col-form-label">Clé de
+                                            <label for="modifier-cle" class="col-sm-4 col-form-label ">Clé de
                                                 cryptage</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="modifier-cle"
-                                                       placeholder="5 caractères alphanumériques" min="5" max="5">
+                                                <input type="text" class="form-control check-validation"
+                                                       id="modifier-cle"
+                                                       placeholder="5 caractères alphanumériques" required
+                                                       pattern="[a-z,A-Z,\d]{5,5}">
                                             </div>
                                         </div>
 
@@ -291,7 +305,8 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
                                     <button type="button" id="modifier-btnAnnuler" class="btn btn-secondary"
                                             data-bs-dismiss="modal">Annuler
                                     </button>
-                                    <button type="button" id="modifier-btnModifier" class="btn btn-primary">Enregistrer
+                                    <button type="button" id="modifier-btnModifier" onclick="return Modifier()"
+                                            class="btn btn-primary">Enregistrer
                                         les modifications
                                     </button>
                                 </div>
@@ -322,12 +337,13 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
 
 
                     <form action="">
-                        <!--USERNAME-->
+                        <!--ID-->
                         <div class="row mb-3">
-                            <label for="usernameRechercheSupprimer" class="col-sm-4 col-form-label">Nom d'utilisateur</label>
+                            <label for="idRechercheSupprimer" class="col-sm-4 col-form-label">Id de
+                                l'utilisateur</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="usernameRechercheSupprimer"
-                                       placeholder="Inscrire le nom d'utilisateur" min="5" max="10">
+                                <input type="text" class="form-control" id="idRechercheSupprimer"
+                                       placeholder="Inscrire le id de l'utilisateur">
                             </div>
                         </div>
                         <!--BOUTON CHERCHER
@@ -341,7 +357,8 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
 
                     <!-- Button trigger modal -->
                     <div class="d-flex justify-content-center col gap-5 pt-2">
-                        <button class="btn btn-primary d-grid gap-2 col-2 " type="button" data-bs-toggle="modal"
+                        <button class="btn btn-primary d-grid gap-2 col-2 " onclick=" return RemplirFormSupprimer()"
+                                id="btn_Supprimer-Rechercher" type="button" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal2">
                             Rechercher
                         </button>
@@ -353,7 +370,7 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content p-3">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel2">Modifier un utilisateur</h1>
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel2">Supprimer un utilisateur</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                 </div>
@@ -364,18 +381,19 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
                                             <label for="supprimer-username" class="col-sm-4 col-form-label">Nom
                                                 d'utilisateur</label>
                                             <div class="col-sm-8">
-                                                <input type="text" class="form-control" id="supprimer-username"
-                                                       placeholder="Inscrire le nom d'utilisateur">
+                                                <input type="text" class="form-control " id="supprimer-username"
+                                                >
                                             </div>
 
                                         </div>
 
                                         <!--PASSWORD-->
                                         <div class="row mb-3">
-                                            <label for="supprimer-password" class="col-sm-4 col-form-label">Mot de passe</label>
+                                            <label for="supprimer-password" class="col-sm-4 col-form-label">Mot de
+                                                passe</label>
                                             <div class="col-sm-8">
                                                 <input type="password" class="form-control" id="supprimer-password"
-                                                       placeholder="Inscrire le password">
+                                                >
                                             </div>
                                         </div>
 
@@ -384,7 +402,8 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
                                             <legend class="col-form-label col-sm-4 pt-0">Type</legend>
                                             <div class="col-sm-8">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="typesup" id="supprimer-user"
+                                                    <input class="form-check-input" type="radio" name="typesup"
+                                                           id="supprimer-user"
                                                            value="option1"
                                                            checked>
                                                     <label class="form-check-label" for="supprimer-user">
@@ -392,7 +411,8 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
                                                     </label>
                                                 </div>
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="typesup" id="supprimer-admin"
+                                                    <input class="form-check-input" type="radio" name="typesup"
+                                                           id="supprimer-admin"
                                                            value="option2">
                                                     <label class="form-check-label" for="supprimer-admin">
                                                         Administrateur
@@ -406,7 +426,8 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
                                         <div class="row mb-3">
                                             <label for="supprimer-theme" class="col-sm-4 col-form-label">Thème</label>
                                             <div class="col-sm-8">
-                                                <select class="form-select" name="theme" id="supprimer-theme" aria-label="Theme">
+                                                <select class="form-select" name="theme" id="supprimer-theme"
+                                                        aria-label="Theme">
                                                     <option value="1" selected>Bleu (par défaut)</option>
                                                     <option value="2">Vert</option>
                                                     <option value="3">Mauve</option>
@@ -418,19 +439,53 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
 
                                         <!--CLÉ DE CRYPTAGE-->
                                         <div class="row mb-3">
-                                            <label for="supprimer-cle" class="col-sm-4 col-form-label">Clé de cryptage</label>
+                                            <label for="supprimer-cle" class="col-sm-4 col-form-label">Clé de
+                                                cryptage</label>
                                             <div class="col-sm-8">
                                                 <input type="text" class="form-control" id="supprimer-cle"
-                                                       placeholder="Inscrire la clé de cryptage">
+                                                >
                                             </div>
                                         </div>
 
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer
                                     </button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#ModalActionSupprimer">Supprimer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal pour valider action destructrice-->
+
+                    <div class="modal fade" id="ModalActionSupprimer" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Attention!</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Attention! Vous aller supprimer le compte de l'utilisateur. Voulez-vous toujours
+                                    continuer?
+                                </div>
+                                <div class="modal-footer">
+
+                                    <!-- bouton non-->
+                                    <button type="button" class="btn btn-secondary" id="btnSupprimerNon"
+                                            data-bs-dismiss="modal">Non
+                                    </button>
+
+                                    <!-- bouton oui-->
+                                    <button type="button" id="btnSupprimerOui" class="btn btn-primary">Oui</button>
                                 </div>
                             </div>
                         </div>
@@ -460,7 +515,7 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
+                            <th scope="col"># Id</th>
                             <th scope="col">Nom d'utilisateur</th>
                             <th scope="col">Mot de passe</th>
                             <th scope="col">Type</th>
@@ -469,34 +524,15 @@ Inscrire le code des boutons ajouter/modifier/Supprimer dans l'accordéon
                         </tr>
                         </thead>
                         <tbody id="afficher-user-tab">
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>Mark</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>Jacob</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry the Bird</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr> <!--à copier pour mettre dans le code javascript pour chaque obj de la liste-->
-                            <th scope="row">{id}</th>
-                            <td>{username}</td>
-                            <td>{password}</td>
-                            <td>{type}</td>
-                            <td>{cle}</td>
-                        </tr>
+
+                        <!--à copier pour mettre dans le code javascript pour chaque obj de la liste
+                       <tr>
+                           <th scope="row">{id}</th>
+                           <td>{username}</td>
+                           <td>{password}</td>
+                           <td>{type}</td>
+                           <td>{cle}</td>
+                       </tr>-->
                         </tbody>
                     </table>
 

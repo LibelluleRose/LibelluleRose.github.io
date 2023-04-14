@@ -6,55 +6,64 @@
 
 
 input:focus:invalid {
-.form-control: bs-danger-border-subtle;
+. form-control: bs-danger-border-subtle;
 }
 
-.check-validation:valid{
+.check-validation:valid {
     background-image: url("check.jpg");
     background-size: contain;
     background-position: right top;
     background-repeat: no-repeat;
+    background-color: #F3FFF2;
 }
 
 
 
-}
-input:invalid{
+#erreur_mdp {
+    color: red;
 
+}
+input:focus-within#formConnexion{
+    background-color: powderblue;
+}
+input:focus:invalid{
+ border: red solid 2px;
+    background-color: #FFEAEA;
+    background-image: url("error.jpg");
     background-size: contain;
     background-position: right top;
     background-repeat: no-repeat;
-
 }
 
-#erreur_mdp{
-    color: red;
-}
-
-.invisible{
+.invisible {
     display: none;
 }
 
+.invalid {
+    color: red;
+    border: red solid 1px;
+}
 
 
-
-header{
+header {
     background-color: mediumblue;
     font-size: 1.5rem;
     color: white;
     text-decoration: none;
 
 }
+
 header a {
     text-decoration: none;
     color: white;
 }
+
 /*Mettre que lorsque on click dessus et active lien change de couleur*/
-.nav-link{
+.nav-link {
     color: white;
 }
 
-#NavNomCompte{
+#NavNomCompte {
     align-items: baseline;
 }
 

@@ -1,104 +1,90 @@
+/*Fonction qui valide les champs de text et return true si tout les champs sont correct*/
+function Validation() {
 
-function Validation(){
-    if($("#user").checked()=== true || $("#admin").checked()=== true){
+    if ($("#user").checked() === true || $("#admin").checked() === true) {
 
-            $("#validation").css(background-image, url("check.jpg\"")).css(background-size, contain);
-            $("#validation").css(background-position, right-top).css(background-repeat, no-repeat);
-            return true;
-        }
+        $("#validation").css(background - image, url("check.jpg\"")).css(background - size, contain);
+        $("#validation").css(background - position, right - top).css(background - repeat, no - repeat);
+        return true;
+    }
 
 }
 
+/*/!*Fonction qui vérifie si *!/
 function AfficherCheck(){
     $("#validation").css(background-image, url("check.jpg\""))
     return true;
-}
+}*/
+
+/**/
+$("#btn-connexion").click(function Connexion() {
+})
 
 function Connexion() {
+
     //mettre les valeurs du formulaire dans des variables
     let username = $("#username").val();
     let password = $("#password").val();
-    let type = $("#user").val(); //todo à revoir si je dois plutôt utiliser un id
-   /* let type2 = document.getElementsByName(name);
-    let type3 = $([name=type]).val(); //todo à revoir si je dois plutôt utiliser un id
-    let type4 = document.getElementsByName(name).values();*/
-
+    let type = $("#user").val();
+    /* let type2 = document.getElementsByName(name);
+     let type3 = $([name=type]).val();
+     let type4 = document.getElementsByName(name).values();*/
 
     let theme = $("#theme").val();
     let cle = $("#cle").val();
 
-    //si type est user on met action user-compte pour que ça aille vers une autre page
-    if ($("#user" === "checked")) {
-        $("#formConnexion").attr("action", "User-compte.html");//vérifier le sélecteur
-    }
-    if ($("#admin" === "checked")) {
-        $("#formConnexion").attr("action", "Admin-GestionUtilisateurs.html");//vérifier le sélecteur
-    }
+    const user = new Utilisateur(username, password, type, theme, cle);
+
+    localStorage.setItem("ObjUser", user);
+
+    localStorage.setItem("UsernameAafficher", username);
+
+    /*  //si type est user on met action user-compte pour que ça aille vers une autre page
+      if ($("#user" === "checked")) {
+         // $("#formConnexion").attr("action", "User-compte.html");//vérifier le sélecteur
+          document.setAttribute("action","User-compte.html");
+      }
+      if ($("#admin" === "checked")) {
+        //  $("#formConnexion").attr("action", "Admin-GestionUtilisateurs.html");//vérifier le sélecteur
+          document.setAttribute("action","Admin-GestionUtilisateurs.html");
+      }*/
 
     //aller chercher le nom du user sur le localstorage
-    let CompteConnecte =  JSON.parse(localStorage.getItem('CompteConnecte',));
-
-    //si le nom n'existait pas dans le localstorage, on le rempli avec une chaine vide
-    if (CompteConnecte === null){
-        CompteConnecte = [];
-    }
+    //let CompteConnecte =  JSON.parse(localStorage.getItem('CompteConnecte',));
+    /*    let UsernameAafficher = localStorage.getItem('CompteConnecte');
+        //si le nom n'existait pas dans le localstorage, on le rempli avec une chaine vide
+        if (CompteConnecte === null){
+            //CompteConnecte = [];
+            CompteConnecte = username;
+        }*/
     //remplis la variable avec le username
-    CompteConnecte.username = username;
-    CompteConnecte.type = type;
+    //   CompteConnecte.username = username;
+    // CompteConnecte.type = type;
+
 
 //enregistrer dans le localStorage
-    localStorage.setItem('Compte', JSON.stringify(CompteConnecte));
+    //  localStorage.setItem('Compte', JSON.stringify(CompteConnecte));
+    // localStorage.setItem('CompteConnecte', username);
 
 
-    //pour la validation : https://getbootstrap.com/docs/5.3/forms/validation/
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-    (() => {
-        'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        const forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.from(forms).forEach(form => {
-            form.addEventListener('submit', event => {
-                if (!form.checkValidity()) {
-                    event.preventDefault()
-                    event.stopPropagation()
-                }
-
-                form.classList.add('was-validated')
-            }, false)
-        })
-    })()
 }
 
+//Fonction qui vérifie si le user existe ds mokapi para l'utilisateur à chercher return true or false
 
-$(document).ready(function () {
+/*function Exist(user) {
+    //aller chercher la liste des utilisateur
+    $("#btn-connexion").click(function () {
+
+        const userExist = $.getJSON('https://642729f8161067a83bf6c6ac.mockapi.io/user/' + $("#id").val())
+            .done(function (utilisateur) {
 
 
-
-
-
-})
-
-//todo: Nettoyer le code supprimer
-//todo: rendre responsive cellulaire
-//todo: rendre responsive tablette
-//todo: mettre validation html
-//todo: mettre validation css
-
-/*
-https://www.delftstack.com/fr/howto/javascript/javascript-form-submit/#:~:text=Obtenir%20les%20valeurs%20des%20champs%20de%20formulaire%20en,pour%20r%C3%A9cup%C3%A9rer%20les%20valeurs%20stock%C3%A9es%20dans%20ce%20champ.
-// Function to check that the input field is not empty while submitting
-function requireValue(input) {
-    return !(input.value.trim() === '');
-}
-// Event listener to perform the validation when user clicks on submit button
-form.addEventListener('submit', (event) => {
-    requiredFields.forEach((input) => {
-        valid = valid|requireValue(input.input);
+            });
     });
-    if (!valid) {
-        event.preventDefault();
+
+    if (user === userExist){
+
     }
-});*/
+
+}*/
+
